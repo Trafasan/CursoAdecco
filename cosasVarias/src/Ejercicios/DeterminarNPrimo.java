@@ -15,17 +15,19 @@ public class DeterminarNPrimo {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Scanner Entrada = new Scanner (System.in);
+		Scanner sc = new Scanner (System.in);
 		int N, resto;
-		boolean Primo = true;
+		boolean esPrimo = true;
 		System.out.print("Inserte un número: ");
-		N=Entrada.nextInt();
+		N=sc.nextInt();
 		for (int x=N-1; x>1; x--) {
-			resto = N%x;
-			if(resto == 0) {Primo = false;}
+			while (esPrimo) {
+				resto = N%x;
+				if(resto == 0) {esPrimo = false;}
+			}
 		}
-		if (Primo==false) {System.out.println("El número "+N+" no es un número primo.");}
+		if (esPrimo==false) {System.out.println("El número "+N+" no es un número primo.");}
 		else {System.out.println("El número "+N+" es un número primo.");}
-		Entrada.close();
+		sc.close();
 	}
 }
