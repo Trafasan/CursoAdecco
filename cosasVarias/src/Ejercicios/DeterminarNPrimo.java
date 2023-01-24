@@ -10,24 +10,33 @@ import java.util.Scanner;
  *
  */
 public class DeterminarNPrimo {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	public static void nPrimo() {
 		Scanner sc = new Scanner (System.in);
-		int N, resto;
 		boolean esPrimo = true;
 		System.out.print("Inserte un número: ");
-		N=sc.nextInt();
-		for (int x=N-1; x>1; x--) {
-			while (esPrimo) {
-				resto = N%x;
-				if(resto == 0) {esPrimo = false;}
+		int N = sc.nextInt();
+		for (int x=2; x<(N/2) && esPrimo; x++) if(N%x == 0) esPrimo = false;
+		System.out.println(esPrimo ? "El número "+N+" es un número primo." : "El número "+N+" no es un número primo.");
+		sc.close();
+	}
+	
+	public static void nPrimoConBreak() {
+		Scanner sc = new Scanner (System.in);
+		boolean esPrimo = true;
+		System.out.print("Inserte un número: ");
+		int N = sc.nextInt();
+		for (int x=2; x<(N/2); x++) {
+			if(N%x == 0) {
+				esPrimo = false;
+				break;
 			}
 		}
-		if (esPrimo==false) {System.out.println("El número "+N+" no es un número primo.");}
-		else {System.out.println("El número "+N+" es un número primo.");}
+		System.out.println(esPrimo ? "El número "+N+" es un número primo." : "El número "+N+" no es un número primo.");
 		sc.close();
+	}
+	
+	public static void main(String[] args) {
+		nPrimo();
+		nPrimoConBreak();
 	}
 }

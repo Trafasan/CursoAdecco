@@ -11,11 +11,44 @@ import javax.swing.JOptionPane;
  */
 public class Ejercicios11_14 {
 	public static void ejercicio11() {
-		
+		/*
+		 * Construir un programa que simule el funcionamiento de una calculadora que puede realizar las cuatro operaciones aritméticas básicas (suma, resta, producto y división) con valores numéricos enteros.
+		 * El usuario debe especificar la operación con el primer caracter del primer parámentro de la línea de comandos:
+		 * S o s para la suma, R o r para la resta, P, p, M o m para el producto y D o d para la división.
+		 */
+		int n1 = Integer.parseInt(JOptionPane.showInputDialog("Inserte el primer número: "));
+		char op = JOptionPane.showInputDialog("Inserte la operación que desea realizar:").charAt(0);
+		int n2 = Integer.parseInt(JOptionPane.showInputDialog("Inserte el segundo número: "));
+		int resultado,resto;
+		if (op=='S'||op=='s') {
+			resultado=n1+n2;
+			JOptionPane.showMessageDialog(null, n1+" + "+n2+" = "+resultado);
+		}
+		else if (op=='R'||op=='r') {
+			resultado=n1-n2;
+			JOptionPane.showMessageDialog(null, n1+" - "+n2+" = "+resultado);
+		}
+		else if (op=='P'||op=='p'||op=='M'||op=='m') {
+			resultado=n1*n2;
+			JOptionPane.showMessageDialog(null, n1+" · "+n2+" = "+resultado);
+		}
+		else if (op=='D'||op=='d') {
+			resultado=n1/n2;
+			resto=n1%n2;
+			JOptionPane.showMessageDialog(null, n1+" / "+n2+" = "+resultado+"\nResto: "+resto);
+		}
+		else JOptionPane.showMessageDialog(null, "ERROR\nNo se reconoce la operación insertada");
 	}
 	
 	public static void ejercicio12() {
-		
+		// Pedir una nota de 0 a 10 y mostrarla de la forma: Insuficiente, Suficiente, Bien, Notable y Sobresaliente.
+		float nota = Float.parseFloat(JOptionPane.showInputDialog("Inserte su nota:"));
+		if (nota>=0 && nota<5) JOptionPane.showMessageDialog(null, nota+": Insuficiente");
+		else if (nota>=5 && nota<6) JOptionPane.showMessageDialog(null, nota+": Suficiente");
+		else if (nota>=6 && nota<7) JOptionPane.showMessageDialog(null, nota+": Bien");
+		else if (nota>=7 && nota<9) JOptionPane.showMessageDialog(null, nota+": Notable");
+		else if (nota>=9 && nota<=10) JOptionPane.showMessageDialog(null, nota+": Sobresaliente");
+		else JOptionPane.showMessageDialog(null, "ERROR\nLa nota insertada no es válida.");
 	}
 	
 	public static void ejercicio13() {
@@ -25,6 +58,58 @@ public class Ejercicios11_14 {
 		 * 2. Retirar dinero de la cuenta
 		 * 3. Salir
 		 */
+		int dinero, saldoF;
+		final int saldoI=1000; 
+		int op = Integer.parseInt(JOptionPane.showInputDialog("Bienvenido :)\nSu saldo actual es de "+saldoI+" $.\n"
+				+ "Inserte la operación deseada:\n1. Ingresar dinero a la cuenta\n2. Sacar dinero de la cuenta\n3. Salir"));
+		switch (op) {
+		case 1 -> {
+			dinero=Integer.parseInt(JOptionPane.showInputDialog("Inserte el dinero que desea ingresar: "));
+			if (dinero>0) {
+				saldoF=saldoI+dinero;
+				JOptionPane.showMessageDialog(null, "Su saldo actual es de "+saldoF+" $.");
+			}
+			else JOptionPane.showMessageDialog(null, "ERROR\nNo se pudo completar la operación");
+		}
+		case 2 -> {
+			dinero=Integer.parseInt(JOptionPane.showInputDialog("Inserte el dinero que desea sacar: "));
+			if (dinero>0 && dinero<=saldoI) {
+			saldoF=saldoI-dinero;
+			JOptionPane.showMessageDialog(null, "Su saldo actual es de "+saldoF+" $.");
+			}
+			else JOptionPane.showMessageDialog(null, "ERROR\nNo se pudo completar la operación");
+		}
+		case 3 -> JOptionPane.showMessageDialog(null, "Hasta pronto :)");
+		default -> JOptionPane.showMessageDialog(null, "ERROR\nNo se reconoció la operación");
+		}
+	}
+	
+	public static void ejercicio13Desplegable() {
+		int dinero, saldoF;
+		final int saldoI=1000; 
+		// Menú desplegable con JOptionPane
+		String opcion = JOptionPane.showInputDialog(null, "Su saldo actual es de "+saldoI+" $.\nSeleccione una opción: ", "OPERACIONES DE BANCO",
+				JOptionPane.PLAIN_MESSAGE, null, new Object[] { "Ingresar dinero", "Sacar dinero", "Salir"}, null).toString();
+		switch (opcion) {
+		case "Ingresar dinero" -> {
+			dinero=Integer.parseInt(JOptionPane.showInputDialog("Inserte el dinero que desea ingresar: "));
+			if (dinero>0) {
+				saldoF=saldoI+dinero;
+				JOptionPane.showMessageDialog(null, "Su saldo actual es de "+saldoF+" $.");
+			}
+			else JOptionPane.showMessageDialog(null, "ERROR\nNo se pudo completar la operación");
+		}
+		case "Sacar dinero" -> {
+			dinero=Integer.parseInt(JOptionPane.showInputDialog("Inserte el dinero que desea sacar: "));
+			if (dinero>0 && dinero<=saldoI) {
+				saldoF=saldoI-dinero;
+				JOptionPane.showMessageDialog(null, "Su saldo actual es de "+saldoF+" $.");
+			}
+			else JOptionPane.showMessageDialog(null, "ERROR\nNo se pudo completar la operación");
+		}
+		case "Salir" -> JOptionPane.showMessageDialog(null, "Hasta pronto :)");
+		default -> JOptionPane.showMessageDialog(null, "ERROR\nNo se reconoció la operación");
+		}
 	}
 	
 	public static void ejercicio14Desplegable() {
@@ -105,6 +190,7 @@ public class Ejercicios11_14 {
 		// ejercicio11();
 		// ejercicio12();
 		// ejercicio13();
+		// ejercicio13Desplegable();
 		// ejercicio14Desplegable();
 		// ejercicio14Botones();
 
