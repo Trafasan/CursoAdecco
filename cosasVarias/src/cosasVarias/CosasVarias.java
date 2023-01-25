@@ -93,10 +93,6 @@ public class CosasVarias {
 		}
 	}
 	
-	public static void retocar6() {
-		
-	}
-	
 	public static void notasMusicales() {
 		int opcion;
 		do {
