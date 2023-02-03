@@ -94,21 +94,13 @@ public class CosasVarias {
 	}
 	
 	public static void notasMusicales() {
+		String[] notas = {"Do", "Re", "Mi", "Fa", "Sol", "La", "Si", "Do'"};
 		int opcion;
 		do {
 			opcion = JOptionPane.showConfirmDialog(null, "Pulsa Aceptar para generar una nota", "CREA TU PROPIA CANCIÓN", 2, 1, null);
 			if (opcion == 0) {
-				int random = (int) (Math.random() * (9 - 1)) + 1;
-				switch (random) {
-				case 1 -> System.out.println("Do");
-				case 2 -> System.out.println("Re");
-				case 3 -> System.out.println("Mi");
-				case 4 -> System.out.println("Fa");
-				case 5 -> System.out.println("Sol");
-				case 6 -> System.out.println("La");
-				case 7 -> System.out.println("Si");
-				case 8 -> System.out.println("Do'");
-				}
+				int random = (int) Math.random()*notas.length;
+				System.out.println(notas[random]);
 			}
 		} while (opcion == 0);
 	}
