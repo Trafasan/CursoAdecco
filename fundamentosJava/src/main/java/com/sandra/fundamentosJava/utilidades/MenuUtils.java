@@ -15,15 +15,19 @@ import com.sandra.fundamentosJava.teoria.Variables;
 
 public class MenuUtils {
 	private static String ruta = "src/main/java/com/sandra/fundamentosJava/images/";
-	private static ImageIcon preocupado = new ImageIcon(ruta+"preocupado.png");
 	private static String opcion;
 	private static int selector;
 	
 	public static void mainMenu() {
 	    try {
 	    	opcion = JOptionPane.showInputDialog(null, "Seleccione un tema: ", "MENÚ PRINCIPAL", JOptionPane.PLAIN_MESSAGE, null,
-					new Object[] {"Variables", "Operadores", "Condicionales", "Bucles", "Arrays"}, null).toString();
-	    	subMenu(opcion);
+					new Object[] {"Variables", "Operadores", "Condicionales", "Bucles", "Arrays", "Extra"}, null).toString();
+			switch (opcion) {
+			case "Variables" -> Variables.temario();
+			case "Extra" -> Extras.apartados();
+			default -> subMenu(opcion);
+			}
+	    	
 	    } catch (NullPointerException e){
 	    	JOptionPane.showMessageDialog(null, "Gracias por usar este programa", "HASTA PRONTO", 1, new ImageIcon(ruta+"gracias.png"));
 	    }
@@ -36,7 +40,6 @@ public class MenuUtils {
 			switch (selector) {
 			case 0 -> {
 				switch (menu) {
-				case "Variables" -> Variables.temario();
 				case "Operadores" -> Operadores.temario();
 				case "Condicionales" -> Condicionales.temario();
 				case "Bucles" -> Bucles.temario();
@@ -49,7 +52,6 @@ public class MenuUtils {
 				case "Condicionales" -> EjCondicionales.ejercicios();
 				case "Bucles" -> EjBucles.ejercicios();
 				case "Arrays" -> EjArrays.ejercicios();
-				default -> JOptionPane.showMessageDialog(null, String.format("No existen ejercicios del tema '%s'", menu), "ERROR", 0, preocupado);
 				}
 			}
 			case -1 -> mainMenu();
