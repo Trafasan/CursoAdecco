@@ -1,2 +1,2 @@
-# EjerciciosGuardados
-Prácticas de programación Java por cuenta propia con algunos proyectos menores del curso de Adecco
+# InitProgJava
+Ejercicios de iniciación de programación en Java refactorizados tras varios cursos de programación.
